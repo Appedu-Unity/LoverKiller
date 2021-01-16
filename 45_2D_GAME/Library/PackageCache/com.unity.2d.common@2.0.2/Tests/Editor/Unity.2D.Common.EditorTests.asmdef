@@ -1,8 +1,6 @@
 {
     "name": "Unity.2D.Common.EditorTests",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
     ],
     "includePlatforms": [
         "Editor"
@@ -10,13 +8,11 @@
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
-    "precompiledReferences": [
-        "nunit.framework.dll"
+    "optionalUnityReferences": [
+        "TestAssemblies"
     ],
     "autoReferenced": false,
     "defineConstraints": [
-        "UNITY_INCLUDE_TESTS"
     ],
-    "versionDefines": [],
-    "noEngineReferences": false
+    "versionDefines": []
 }
