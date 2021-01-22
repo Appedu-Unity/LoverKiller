@@ -20329,7 +20329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d45715a05ded84da55a1224aeb82bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.04
+  speed: 0.01
   point: {fileID: 2053920633}
   fire: {fileID: 4490515962681584361, guid: 25bf60df3400aa94cb1d5d88a60fd9ab, type: 3}
   fireSpeed: 500

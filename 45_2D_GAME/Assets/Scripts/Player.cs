@@ -2,7 +2,7 @@
 public class Player : MonoBehaviour
 {
     [Header("Move Speed"), Range(0.01f, 1)]
-    public float speed = 0.01f;
+    public float speed = 0.001f;
 
     [Header("Fire Point")]
     public GameObject point;
