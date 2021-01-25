@@ -50,3 +50,6 @@ TagManager:
   - name: High place
     uniqueID: 2077042639
     locked: 0
+  - name: article
+    uniqueID: 3041388565
+    locked: 0
