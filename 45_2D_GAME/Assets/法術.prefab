@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8360667018871773377}
   - component: {fileID: 8396696737280774610}
   - component: {fileID: 6487413067958074616}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: "\u6CD5\u8853"
   m_TagString: "\u6CD5\u8853"
   m_Icon: {fileID: 0}
@@ -4791,5 +4791,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.4200001, y: 1.4199985}
+  m_Size: {x: 0.62, y: 0.62}
   m_Direction: 0

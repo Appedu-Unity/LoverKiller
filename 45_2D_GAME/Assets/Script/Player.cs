@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     public AudioClip soundFire;
     [Header("生命數量"), Range(0, 10)]
     public int live = 3;
+
+    private int numOfKeys = 0;
 
     private int score;
     private AudioSource aud;
@@ -52,6 +55,15 @@ public class Player : MonoBehaviour
         //透過<類型>取得物件
         //僅限於此(類型)在場景上只有一個
         gm = FindObjectOfType<Gamemanager>();
+    }
+    public int GetKeyNumbers()
+    {
+        return this.numOfKeys;
+    }
+
+    public void UseKey()
+    {
+        this.numOfKeys -= 1;
     }
 
     private void Start()
@@ -107,26 +119,37 @@ public class Player : MonoBehaviour
 
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag.Equals("敵人法術"))
+        {
+            Dead();
+        }
+        else if (collision.collider.tag.Equals("Key"))
+        {
+            numOfKeys++;
+            print(numOfKeys);
+        }
+    }
 
     /// <summary>
     /// 死亡功能
     /// </summary>
     /// <param name="obj"></param>
-    private void Dead(string obj)
+    private void Dead()
     {
+        //如果 死亡開關 為是 就 跳出
+        if (ani.GetBool("死亡開關")) return;
+        enabled = false;
+        ani.SetBool("死亡開關", true);
 
-        if (obj == "敵人法術")
-        {
-            //如果 死亡開關 為是 就 跳出
-            if (ani.GetBool("死亡開關")) return;
-            enabled = false;
-            ani.SetBool("死亡開關", true);
+        Invoke("Replay", 2.5f);
 
-            //延遲呼叫("方法名稱",延遲時間)
-            Invoke("Replar", 2.5f);
-
-            gm.PlayDead();
-        }
+        //      gm.PlayDead();
     }
 
+    private void Replay()
+    {
+        SceneManager.LoadScene("關卡一");
+    }
 }
