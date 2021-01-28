@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8360667018871773376}
   - component: {fileID: 8360667018871773377}
   - component: {fileID: 8396696737280774610}
+  - component: {fileID: 6487413067958074616}
   m_Layer: 0
   m_Name: "\u6CD5\u8853"
-  m_TagString: Untagged
+  m_TagString: "\u6CD5\u8853"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4774,5 +4775,21 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!70 &6487413067958074616
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8360667018871773378}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.4200001, y: 1.4199985}
+  m_Direction: 0
