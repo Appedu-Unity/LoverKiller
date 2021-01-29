@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [Header("法術生成點"), Tooltip("法術要生成的起始位址")]
     public GameObject point;
     [Header("法術速度"), Range(0, 5000)]
-    public float speedspells = 800;
+    public float speedspells =3000;
     [Header("攻擊延遲")]
     public float attackDelay = 3;
     [Header("施展法術音效")]

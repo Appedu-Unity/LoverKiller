@@ -161,10 +161,9 @@ public class Player : MonoBehaviour
         if (ani.GetBool("死亡開關")) return;
         enabled = false;
         ani.SetBool("死亡開關", true);
+        
+        if (Gamemanager.live>1)Invoke("Replay", 2.5f);
 
-        Invoke("Replay", 2.5f);
-
-        //      gm.PlayDead();
     }
 
     private void Replay()

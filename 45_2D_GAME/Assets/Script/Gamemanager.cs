@@ -9,8 +9,9 @@ using UnityEngine.UI;
 public class Gamemanager : MonoBehaviour
 {
     [Header("生命數量"), Range(0, 10)]
-    public int live = 3;
+    public static int live = 3;
     public Text textKeyValue;
+    public GameObject final;
 
     private int currentLive = 3;
     private GameObject[] imgLives;
@@ -55,7 +56,9 @@ public class Gamemanager : MonoBehaviour
         {
             currentLive--;
             imgLives[currentLive].SetActive(false);
+            if (live == 0) final.SetActive(true);
             return false;
+
         }
     }
 
