@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3119880587067053829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.57, y: 13.01, z: 0}
+  m_LocalPosition: {x: 4.57, y: 13.01, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3119880588230659023}
@@ -122,6 +122,7 @@ MonoBehaviour:
   spells: {fileID: 8360667018871773378, guid: 7a2cfaf1bee4801429d89f2940ac6f9d, type: 3}
   point: {fileID: 8360667018871773378, guid: b8c3e6153723933498349f34973a295e, type: 3}
   speedspells: 800
+  attackDelay: 3
   soundspells: {fileID: 8300000, guid: 624927579b63a5a4eb8feaa8517e3b9f, type: 3}
   rangeTrack: 5.5
   rangeAttack: 3.5

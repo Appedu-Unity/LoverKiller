@@ -2,15 +2,20 @@
 
 public class Door : MonoBehaviour
 {
+    private Gamemanager gm;
+    private void Awake()
+    {
+        gm = FindObjectOfType<Gamemanager>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag.Equals("Player"))
         {
-            Player plr = collision.collider.GetComponent<Player>();
-            if (plr.GetKeyNumbers() > 0)
+
+            if (gm.GetKeyNumbers() > 0)
             {
-                plr.UseKey();
+                gm.UseKey();
                 GetComponent<BoxCollider2D>().enabled = false;
                 Destroy(gameObject);
             }

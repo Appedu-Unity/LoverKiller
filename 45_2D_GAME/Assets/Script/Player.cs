@@ -17,10 +17,7 @@ public class Player : MonoBehaviour
     public int Speedspelles = 500;
     [Header("施法音效")]
     public AudioClip soundFire;
-    [Header("生命數量"), Range(0, 10)]
-    public int live = 3;
 
-    private int numOfKeys = 0;
 
     private int score;
     private AudioSource aud;
@@ -56,15 +53,8 @@ public class Player : MonoBehaviour
         //僅限於此(類型)在場景上只有一個
         gm = FindObjectOfType<Gamemanager>();
     }
-    public int GetKeyNumbers()
-    {
-        return this.numOfKeys;
-    }
 
-    public void UseKey()
-    {
-        this.numOfKeys -= 1;
-    }
+
 
     private void Start()
     {
@@ -110,25 +100,54 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+
             //音源 的 播放一次音效(音效，隨機大小聲)
             aud.PlayOneShot(soundFire, Random.Range(0.8f, 1.5f));
             //生成 子彈在槍口
             //生成(物件，座標，角度)
             GameObject spellsIns = Instantiate(spells, point.transform.position, point.transform.rotation);
-            spellsIns.GetComponent<Rigidbody2D>().AddForce(transform.right * Speedspelles);
+
+
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = Camera.main.nearClipPlane;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
+
+            Vector3 directY = worldPosition - transform.position;
+            directY.x = 0;
+            directY.y = Mathf.Clamp(directY.y, -1f, 1f);
+
+
+            //print("MO" + (worldPosition - transform.position));
+            spellsIns.GetComponent<Rigidbody2D>().AddForce((transform.right + directY) * Speedspelles);
+            //spellsIns.GetComponent<Rigidbody2D>().AddForce(transform.right * Speedspelles);
 
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag.Equals("敵人法術"))
+        string tag = collision.collider.tag;
+        switch (tag)
         {
-            Dead();
-        }
-        else if (collision.collider.tag.Equals("Key"))
-        {
-            numOfKeys++;
-            print(numOfKeys);
+            case "敵人法術":
+                if (gm.HurtAndCheckDead())
+                {
+                    Dead();
+                }
+                break;
+            case "Key":
+                gm.addKey();
+                Destroy(collision.collider.transform.gameObject);
+                break;
+            case "Speedup":
+                speed += 2;
+                Destroy(collision.collider.transform.gameObject);
+                break;
+            case "addLive":
+                gm.addLive();
+                Destroy(collision.collider.transform.gameObject);
+                break;
+            default:
+                break;
         }
     }
 
