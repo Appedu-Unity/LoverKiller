@@ -132,6 +132,7 @@ public class Player : MonoBehaviour
                 if (gm.HurtAndCheckDead())
                 {
                     Dead();
+                    gm.ShowGameMenu(false);
                 }
                 break;
             case "Key":
@@ -161,9 +162,8 @@ public class Player : MonoBehaviour
         if (ani.GetBool("死亡開關")) return;
         enabled = false;
         ani.SetBool("死亡開關", true);
-        
-        if (Gamemanager.live>1) Invoke("Replay", 2.5f);
 
+        //if (Gamemanager.live > 1) Invoke("Replay", 2.5f);
     }
 
     private void Replay()

@@ -49,13 +49,13 @@ public class Gamemanager : MonoBehaviour
     {
         if (currentLive <= 0)
         {
-            return false;
+            return true;
         }
         else
         {
             currentLive--;
             imgLives[currentLive].SetActive(false);
-            if (currentLive == 0) final.SetActive(true);
+
             return false;
 
         }
@@ -99,5 +99,17 @@ public class Gamemanager : MonoBehaviour
     private void QuitGame()
     {
         if (currentLive == 0 && Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+    }
+
+    public void ShowGameMenu(bool isStart)
+    {
+        if (isStart)
+        {
+            //TODO
+        }
+        else
+        {
+            if (currentLive == 0) final.SetActive(true);
+        }
     }
 }
