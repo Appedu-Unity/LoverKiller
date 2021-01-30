@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 遊戲管理器
@@ -13,7 +12,7 @@ public class Gamemanager : MonoBehaviour
     public Text textKeyValue;
     public GameObject final;
 
-    private int currentLive = 3;
+    private static int currentLive = 3;
     private GameObject[] imgLives;
     private int numOfKeys = 0;
 
@@ -50,13 +49,13 @@ public class Gamemanager : MonoBehaviour
     {
         if (currentLive <= 0)
         {
-            return true;
+            return false;
         }
         else
         {
             currentLive--;
             imgLives[currentLive].SetActive(false);
-            if (live == 0) final.SetActive(true);
+            if (currentLive == 0) final.SetActive(true);
             return false;
 
         }
@@ -87,5 +86,18 @@ public class Gamemanager : MonoBehaviour
         {
             if (i >= live) imgLives[i].SetActive(false);
         }
+    }
+    private void Update()
+    {
+        BakeTomenu();
+        QuitGame();
+    }
+    private void BakeTomenu()
+    {
+        if (currentLive == 0 && Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene("選單");
+    }
+    private void QuitGame()
+    {
+        if (currentLive == 0 && Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
     }
 }

@@ -162,7 +162,7 @@ public class Player : MonoBehaviour
         enabled = false;
         ani.SetBool("死亡開關", true);
         
-        if (Gamemanager.live>1)Invoke("Replay", 2.5f);
+        if (Gamemanager.live>1) Invoke("Replay", 2.5f);
 
     }
 
