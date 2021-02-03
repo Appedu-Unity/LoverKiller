@@ -159,7 +159,7 @@ MonoBehaviour:
   spells: {fileID: 8360667018871773378, guid: d502f6191af4f1a41aebf018c61619c5, type: 3}
   point: {fileID: 2598234851497144231}
   speedspells: 3000
-  attackDelay: 4
+  attackDelay: 2
   soundspells: {fileID: 0}
   rangeTrack: 6.5
   rangeAttack: 5.5
