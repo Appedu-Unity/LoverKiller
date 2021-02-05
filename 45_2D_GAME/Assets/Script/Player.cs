@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public int Speedspelles = 500;
     [Header("施法音效")]
     public AudioClip soundFire;
+    public bool inPortal;
 
 
     private int score;
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
         {
             ani.SetBool("攻擊開關", false);
         }
-
+        Nextlevel();
     }
     private void Awake()
     {
@@ -53,7 +54,14 @@ public class Player : MonoBehaviour
         //僅限於此(類型)在場景上只有一個
         gm = FindObjectOfType<Gamemanager>();
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name == "傳送門") inPortal = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.name == "傳送門") inPortal = true;
+    }
 
 
     private void Start()
@@ -168,6 +176,17 @@ public class Player : MonoBehaviour
 
     private void Replay()
     {
-        SceneManager.LoadScene("關卡一");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    private void Nextlevel()
+    {
+        if (inPortal && Input.GetKeyDown(KeyCode.R))
+        {
+            int lvIndex = SceneManager.GetActiveScene().buildIndex;
+
+            lvIndex++;
+
+            SceneManager.LoadScene(lvIndex);
+        }
     }
 }

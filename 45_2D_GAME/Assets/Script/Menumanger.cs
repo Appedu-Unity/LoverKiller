@@ -17,5 +17,13 @@ public class Menumanger : MonoBehaviour
     {
         Application.Quit();
     }
+    private void SetCollision()
+    {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("player"), LayerMask.NameToLayer("player_magic"));
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("enemy_magic"));
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy_magic"), LayerMask.NameToLayer("player_magic"));
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy_magic"), LayerMask.NameToLayer("enemy_magic"));
+    }
 
 }
+ 
