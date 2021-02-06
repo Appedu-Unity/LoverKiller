@@ -9,7 +9,7 @@ public class monster : MonoBehaviour
     [Header("法術生成點"), Tooltip("法術要生成的起始位址")]
     public GameObject point;
     [Header("法術速度"), Range(0, 5000)]
-    public float speedspells =3000;
+    public float speedspells = 3000;
     [Header("攻擊延遲")]
     public float attackDelay = 3;
     [Header("施展法術音效")]
@@ -18,6 +18,8 @@ public class monster : MonoBehaviour
     public float rangeTrack = 4.5f;
     [Header("攻擊範圍"), Range(1, 1000)]
     public float rangeAttack = 3.5f;
+
+    public int live = 10;
 
     public Transform player;
     private Rigidbody2D rig;
@@ -43,11 +45,11 @@ public class monster : MonoBehaviour
     {
         if (player.position.x > transform.position.x)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+            transform.eulerAngles = Vector3.zero;
         }
         else
         {
-            transform.eulerAngles = Vector3.zero;
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
         float dis = Vector3.Distance(player.position, transform.position);
@@ -94,8 +96,19 @@ public class monster : MonoBehaviour
         if (timer >= attackDelay)
         {
             ani.SetBool("攻擊開關", true);
-            GameObject spellsIns = Instantiate(spells, point.transform.position, point.transform.rotation);
-            spellsIns.GetComponent<Rigidbody2D>().AddForce(transform.right * speedspells);
+
+            Vector3 spells1 = point.transform.rotation.eulerAngles;
+            spells1.z += 20;
+            GameObject spellsIns1 = Instantiate(spells, point.transform.position + new Vector3(0, 1, 0), Quaternion.Euler(spells1));
+            spellsIns1.GetComponent<Rigidbody2D>().AddForce(spellsIns1.transform.right * speedspells);
+
+            Vector3 spells2 = point.transform.rotation.eulerAngles;
+            spells2.z -= 20;
+            GameObject spellsIns2 = Instantiate(spells, point.transform.position + new Vector3(0, -1, 0), Quaternion.Euler(spells2));
+            spellsIns2.GetComponent<Rigidbody2D>().AddForce(spellsIns2.transform.right * speedspells);
+
+            GameObject spellsIns3 = Instantiate(spells, point.transform.position, point.transform.rotation);
+            spellsIns3.GetComponent<Rigidbody2D>().AddForce(spellsIns3.transform.right * speedspells);
             timer = 0;
         }
         else
@@ -120,7 +133,11 @@ public class monster : MonoBehaviour
     {
         if (collision.collider.tag.Equals("法術"))
         {
-            Dead();
+            live--;
+            if (live <= 0)
+            {
+                Dead();
+            }
         }
     }
 

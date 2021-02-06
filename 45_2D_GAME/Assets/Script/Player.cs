@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     {
         if (collision.name == "傳送門")
         {
-            inPortal = true;
+            inPortal = false;
             gm.showMessage(false);
         }
     }
