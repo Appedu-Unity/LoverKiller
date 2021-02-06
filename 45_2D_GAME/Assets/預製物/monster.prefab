@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2598234850557492710}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.449997, y: 12.190002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 1061527380459089461, guid: fb848b78472e5ec40b2b1c377de6c98f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.2, y: 0.268}
@@ -163,6 +163,7 @@ MonoBehaviour:
   soundspells: {fileID: 0}
   rangeTrack: 6.5
   rangeAttack: 5.5
+  live: 10
   player: {fileID: 0}
 --- !u!1 &2598234851497144231
 GameObject:
@@ -188,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2598234851497144231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.11, y: -0.49, z: 0}
+  m_LocalPosition: {x: 1.26, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2598234851683263375}
