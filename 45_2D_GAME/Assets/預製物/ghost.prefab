@@ -149,13 +149,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 588c1a2e9a5669e418971fc5d3b3c3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 0.04
   spells: {fileID: 8360667018871773378, guid: 11fdb4b927c35fc46bcd136f5768ed13, type: 3}
   point: {fileID: 911002181238809213}
   speedspells: 3000
   attackDelay: 3
   soundspells: {fileID: 0}
-  rangeTrack: 4.5
+  rangeTrack: 10
   rangeAttack: 3.5
   sounddead: {fileID: 8300000, guid: 38f6f68aa3d7c7048a398a8aeb0b61db, type: 3}
   ghostLive: 10
