@@ -12,10 +12,12 @@ public class Gamemanager : MonoBehaviour
     public Text textKeyValue;
     public Text displayMessage;
     public GameObject final;
+    public Transform player;
 
     private static int currentLive = 3;
     private GameObject[] imgLives;
     private int numOfKeys = 0;
+    private Vector3 oriPosition;
 
     private void Awake()
     {
@@ -30,6 +32,8 @@ public class Gamemanager : MonoBehaviour
         textKeyValue.text = numOfKeys.ToString();
         setCollision();
         displayMessage.enabled = false;
+
+        oriPosition = player.transform.position;
     }
 
     private void setCollision()
@@ -93,7 +97,17 @@ public class Gamemanager : MonoBehaviour
     {
         BakeTomenu();
         QuitGame();
+        returnPosition();
     }
+
+    private void returnPosition()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            player.transform.position = oriPosition;
+        }
+    }
+
     private void BakeTomenu()
     {
         if (currentLive == 0 && Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene("選單");

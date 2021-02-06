@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "傳送門")
+        if (collision.name.Equals("傳送門") || collision.tag.Equals("Finish"))
         {
             inPortal = true;
             gm.showMessage(true);
@@ -64,14 +64,12 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name == "傳送門")
+        if (collision.name == "傳送門" || collision.tag.Equals("Finish"))
         {
             inPortal = false;
             gm.showMessage(false);
         }
     }
-
-
 
     private void Start()
     {
