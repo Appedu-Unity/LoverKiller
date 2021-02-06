@@ -18,7 +18,10 @@ public class Enemy : MonoBehaviour
     public float rangeTrack = 4.5f;
     [Header("攻擊範圍"), Range(1, 1000)]
     public float rangeAttack = 3.5f;
+    [Header("死亡音效")]
+    public AudioClip sounddead;
 
+    private AudioSource aud;
     public Transform player;
     private Rigidbody2D rig;
     private float timer = 0;
@@ -30,6 +33,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.Find("玩家").transform;
         rig = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
+        aud = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -109,6 +113,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Dead()
     {
+        aud.PlayOneShot(sounddead, 2.5f);
         ani.SetBool("死亡開關", true);
         enabled = false;
         GetComponent<CapsuleCollider2D>().enabled = false;

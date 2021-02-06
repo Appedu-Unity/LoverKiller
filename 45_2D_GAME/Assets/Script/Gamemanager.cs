@@ -13,11 +13,14 @@ public class Gamemanager : MonoBehaviour
     public Text displayMessage;
     public GameObject final;
     public Transform player;
+    [Header("死亡音效")]
+    public AudioClip gameover;
 
     private static int currentLive = 3;
     private GameObject[] imgLives;
     private int numOfKeys = 0;
     private Vector3 oriPosition;
+    private AudioSource aud;
 
     private void Awake()
     {
@@ -34,6 +37,7 @@ public class Gamemanager : MonoBehaviour
         displayMessage.enabled = false;
 
         oriPosition = player.transform.position;
+        aud = GetComponent<AudioSource>();
     }
 
     private void setCollision()
@@ -110,11 +114,21 @@ public class Gamemanager : MonoBehaviour
 
     private void BakeTomenu()
     {
-        if (currentLive == 0 && Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene("選單");
+        if (currentLive == 0 && Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("選單");
+            //aud.PlayOneShot(gameover, Random.Range(0.8f, 1.5f));
+        }
     }
     private void QuitGame()
     {
-        if (currentLive == 0 && Input.GetKeyDown(KeyCode.Escape)) Application.Quit();
+
+        if (currentLive == 0 && Input.GetKeyDown(KeyCode.Escape))
+        {
+
+            Application.Quit();
+        }
+
     }
 
     public void ShowGameMenu(bool isStart)
@@ -125,7 +139,11 @@ public class Gamemanager : MonoBehaviour
         }
         else
         {
-            if (currentLive == 0) final.SetActive(true);
+            if (currentLive == 0)
+            {
+                final.SetActive(true);
+                aud.PlayOneShot(gameover, 1f);
+            }
         }
     }
 
