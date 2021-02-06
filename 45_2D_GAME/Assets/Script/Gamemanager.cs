@@ -10,6 +10,7 @@ public class Gamemanager : MonoBehaviour
     [Header("生命數量"), Range(0, 10)]
     public static int live = 3;
     public Text textKeyValue;
+    public Text displayMessage;
     public GameObject final;
 
     private static int currentLive = 3;
@@ -28,6 +29,7 @@ public class Gamemanager : MonoBehaviour
         numOfKeys = 0;
         textKeyValue.text = numOfKeys.ToString();
         setCollision();
+        displayMessage.enabled = false;
     }
 
     private void setCollision()
@@ -111,5 +113,10 @@ public class Gamemanager : MonoBehaviour
         {
             if (currentLive == 0) final.SetActive(true);
         }
+    }
+
+    public void showMessage(bool isDispaly)
+    {
+        this.displayMessage.enabled = isDispaly;
     }
 }

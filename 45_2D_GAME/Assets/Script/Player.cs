@@ -56,12 +56,21 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name == "傳送門") inPortal = true;
+        if (collision.name == "傳送門")
+        {
+            inPortal = true;
+            gm.showMessage(true);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name == "傳送門") inPortal = true;
+        if (collision.name == "傳送門")
+        {
+            inPortal = true;
+            gm.showMessage(false);
+        }
     }
+
 
 
     private void Start()
@@ -187,6 +196,7 @@ public class Player : MonoBehaviour
             lvIndex++;
 
             SceneManager.LoadScene(lvIndex);
+
         }
     }
 }
